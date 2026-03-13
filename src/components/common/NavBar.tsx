@@ -38,7 +38,7 @@ const NavBar: React.FC<NavBarProps> = ({ items = DEFAULT_ITEMS, className = '' }
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
-              <span>{item.icon}</span>
+              <span aria-hidden="true">{item.icon}</span>
               <span>{item.label}</span>
             </Nav.Link>
           </Nav.Item>
