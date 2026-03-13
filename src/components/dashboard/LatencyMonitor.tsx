@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useReducer, useEffect, useRef } from 'react';
 import { Card, Badge } from 'react-bootstrap';
 import {
   LineChart,
@@ -17,11 +17,18 @@ interface LatencyDataPoint {
   latency: number;
 }
 
+type LatencyAction = { type: 'ADD_POINT'; point: LatencyDataPoint };
+
 const MAX_DATA_POINTS = 20;
+
+function latencyReducer(state: LatencyDataPoint[], action: LatencyAction): LatencyDataPoint[] {
+  const next = [...state, action.point];
+  return next.slice(-MAX_DATA_POINTS);
+}
 
 const LatencyMonitor: React.FC = () => {
   const { healthCheck } = useHealth();
-  const [latencyData, setLatencyData] = useState<LatencyDataPoint[]>([]);
+  const [latencyData, dispatch] = useReducer(latencyReducer, []);
   const prevLatencyRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -35,10 +42,7 @@ const LatencyMonitor: React.FC = () => {
         }),
         latency: healthCheck.latencyMs,
       };
-      setLatencyData((prev) => {
-        const next = [...prev, newPoint];
-        return next.slice(-MAX_DATA_POINTS);
-      });
+      dispatch({ type: 'ADD_POINT', point: newPoint });
     }
   }, [healthCheck?.latencyMs]);
 
