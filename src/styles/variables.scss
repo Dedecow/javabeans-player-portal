@@ -1,0 +1,45 @@
+// JavaBeans Player Portal - SCSS Variables
+
+// Brand Colors
+$primary: #6f42c1;
+$secondary: #6c757d;
+$success: #198754;
+$warning: #ffc107;
+$danger: #dc3545;
+$info: #0dcaf0;
+
+// Custom Brand
+$brand-primary: #6f42c1;
+$brand-secondary: #e83e8c;
+$brand-accent: #fd7e14;
+
+// Dark Theme Colors
+$dark-bg: #1a1d21;
+$dark-surface: #212529;
+$dark-card: #2d3238;
+$dark-border: #495057;
+
+// Light Theme Colors
+$light-bg: #f8f9fa;
+$light-surface: #ffffff;
+$light-card: #ffffff;
+$light-border: #dee2e6;
+
+// Game Colors
+$color-ia-up: #198754;
+$color-ia-unreachable: #ffc107;
+$color-ia-down: #dc3545;
+$color-db-up: #198754;
+$color-db-down: #dc3545;
+
+// Typography
+$font-family-base: 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-family-mono: 'Cascadia Code', 'Fira Code', monospace;
+
+// Spacing
+$sidebar-width: 260px;
+$header-height: 60px;
+
+// Animations
+$transition-base: all 0.2s ease-in-out;
+$transition-slow: all 0.4s ease-in-out;
