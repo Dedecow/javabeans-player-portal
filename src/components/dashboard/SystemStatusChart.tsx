@@ -16,19 +16,6 @@ const SystemStatusChart: React.FC = () => {
   const { gameHistory } = useAppSelector((s) => s.game);
 
   const chartData = useMemo(() => {
-    if (gameHistory.length === 0) {
-      const now = Date.now();
-      return Array.from({ length: 7 }, (_, i) => ({
-        time: new Date(now - (6 - i) * 60000).toLocaleTimeString('pt-BR', {
-          hour: '2-digit',
-          minute: '2-digit',
-        }),
-        xp: 0,
-        sucesso: 0,
-        falha: 0,
-      }));
-    }
-
     return gameHistory.slice(0, 10).reverse().map((entry) => ({
       time: new Date(entry.timestamp).toLocaleTimeString('pt-BR', {
         hour: '2-digit',
