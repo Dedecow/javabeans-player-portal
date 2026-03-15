@@ -25,9 +25,6 @@ export const useGame = () => {
     try {
       const scenario = await gameService.getInitialScenario();
       dispatch(setScenario(scenario));
-      if (scenario.receitaAtual) {
-        dispatch(setRecipe(scenario.receitaAtual));
-      }
       toast.success('Cenário carregado com sucesso!');
     } catch {
       toast.error('Erro ao carregar cenário. Tente novamente.');

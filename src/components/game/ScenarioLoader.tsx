@@ -9,6 +9,12 @@ interface ScenarioLoaderProps {
   onLoad: () => void;
 }
 
+const DIFICULDADE_LABEL: Record<string, string> = {
+  FACIL: 'Fácil',
+  MEDIO: 'Médio',
+  DIFICIL: 'Difícil',
+};
+
 const ScenarioLoader: React.FC<ScenarioLoaderProps> = ({ scenario, isLoading, onLoad }) => {
   if (!scenario) {
     return (
@@ -45,20 +51,16 @@ const ScenarioLoader: React.FC<ScenarioLoaderProps> = ({ scenario, isLoading, on
           <span className="fw-semibold">{scenario.titulo}</span>
         </div>
         <div className="d-flex gap-2">
-          {scenario.nivel && (
-            <Badge bg="warning" text="dark">Nível {scenario.nivel}</Badge>
-          )}
-          {scenario.dominio && (
-            <Badge bg="light" text="dark">{scenario.dominio.nome}</Badge>
-          )}
+          <Badge bg="warning" text="dark">{DIFICULDADE_LABEL[scenario.dificuldade] ?? scenario.dificuldade}</Badge>
+          <Badge bg="light" text="dark">{scenario.tempoEstimado} min</Badge>
         </div>
       </Card.Header>
       <Card.Body>
         <Alert variant="info" className="mb-0">
-          <p className="mb-0 fst-italic">"{scenario.narrativa}"</p>
+          <p className="mb-0 fst-italic">"{scenario.contextoNarrativo}"</p>
         </Alert>
-        {scenario.dominio?.descricao && (
-          <p className="text-muted small mt-2 mb-0">{scenario.dominio.descricao}</p>
+        {scenario.descricao && (
+          <p className="text-muted small mt-2 mb-0">{scenario.descricao}</p>
         )}
       </Card.Body>
       <Card.Footer className="d-flex justify-content-end">
