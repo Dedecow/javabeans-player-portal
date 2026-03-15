@@ -23,15 +23,6 @@ export interface ReceitaDTO {
   clienteDescricao?: string;
 }
 
-export interface CenarioDTO {
-  id: number;
-  titulo: string;
-  narrativa: string;
-  dominio?: DominioDTO;
-  receitaAtual?: ReceitaDTO;
-  nivel?: number;
-}
-
 export interface ResultadoPreparar {
   sucesso: boolean;
   mensagem: string;
